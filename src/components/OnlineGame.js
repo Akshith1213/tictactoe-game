@@ -2,7 +2,11 @@ import React, { useState, useEffect } from 'react';
 import io from 'socket.io-client';
 import '../styles/OnlineGame.css';
 
-const socket = io('http://localhost:3002');
+const SOCKET_SERVER = "https://tictactoe-game-hy8d.onrender.com";
+const socket = io(SOCKET_SERVER, {
+  transports: ['websocket', 'polling'],
+  withCredentials: true
+});
 
 const OnlineGame = () => {
   const [room, setRoom] = useState('');

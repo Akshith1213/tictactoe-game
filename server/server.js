@@ -4,14 +4,18 @@ const { Server } = require('socket.io');
 const cors = require('cors');
 
 const app = express();
-app.use(cors());
-const server = http.createServer(app);
+app.use(cors({
+  origin: "https://classy-sable-98bb4f.netlify.app",
+  methods: ["GET", "POST"],
+  credentials: true
+}));
 
-// Remove the duplicate io declaration and merge the configurations
+const server = http.createServer(app);
 const io = new Server(server, {
   cors: {
-    origin: process.env.CLIENT_URL || "http://localhost:3000",
-    methods: ["GET", "POST"]
+    origin: "https://classy-sable-98bb4f.netlify.app",
+    methods: ["GET", "POST"],
+    credentials: true
   }
 });
 
