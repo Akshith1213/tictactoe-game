@@ -5,7 +5,10 @@ import '../styles/OnlineGame.css';
 const SOCKET_SERVER = "https://tictactoe-game-hy8d.onrender.com";
 const socket = io(SOCKET_SERVER, {
   transports: ['websocket', 'polling'],
-  withCredentials: true
+  withCredentials: true,
+  cors: {
+    origin: "https://akshiths-tictactoe.netlify.app"
+  }
 });
 
 const OnlineGame = () => {

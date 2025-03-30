@@ -5,7 +5,7 @@ const cors = require('cors');
 
 const app = express();
 app.use(cors({
-  origin: "https://classy-sable-98bb4f.netlify.app",
+  origin: "https://akshiths-tictactoe.netlify.app",
   methods: ["GET", "POST"],
   credentials: true
 }));
@@ -13,7 +13,7 @@ app.use(cors({
 const server = http.createServer(app);
 const io = new Server(server, {
   cors: {
-    origin: "https://classy-sable-98bb4f.netlify.app",
+    origin: "https://akshiths-tictactoe.netlify.app",
     methods: ["GET", "POST"],
     credentials: true
   }
