@@ -6,9 +6,11 @@ const cors = require('cors');
 const app = express();
 app.use(cors());
 const server = http.createServer(app);
+
+// Remove the duplicate io declaration and merge the configurations
 const io = new Server(server, {
   cors: {
-    origin: "http://localhost:3000",
+    origin: process.env.CLIENT_URL || "http://localhost:3000",
     methods: ["GET", "POST"]
   }
 });
@@ -102,6 +104,8 @@ io.on('connection', (socket) => {
   });
 });
 
-server.listen(3002, () => {
-  console.log('Server running on port 3002');
+const port = process.env.PORT || 3002;
+
+server.listen(port, () => {
+  console.log(`Server running on port ${port}`);
 });
